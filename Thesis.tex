@@ -36,6 +36,7 @@
 %- [list]% provide enhanced list environments for algorithm and coding
 %- [math]% enable some extra math packages
 \usepackage{Style/artracom}% user defined commands
+\usepackage{emptypage}
 %---------------------------------------------------------------------------%
 %->> Document inclusion
 %---------------------------------------------------------------------------%
@@ -60,11 +61,11 @@
 \linespread{1.5}% local line space
 \tableofcontents% contents catalog
 
-\intotoc{\listfigurename}% add link to contents table and bookmark
-\listoffigures% figures catalog
+%\intotoc{\listfigurename}% add link to contents table and bookmark
+%\listoffigures% figures catalog
 
-\intotoc{\listtablename}% add link to contents table and bookmark
-\listoftables% tables catalog
+%\intotoc{\listtablename}% add link to contents table and bookmark
+%\listoftables% tables catalog
 }
 % \input{Tex/Prematter}% list of symbols, preface content
 %-
@@ -83,7 +84,7 @@
 %-
 \backmatter% initialize the environment
 \intotoc{\bibname}% add link to contents table and bookmark
-% \bibliography{Biblio/ref}% bibliography
+%\bibliography{Biblio/ref}% bibliography
 \makereference
 
 \input{Tex/Backmatter}% other information

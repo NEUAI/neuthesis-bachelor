@@ -93,27 +93,27 @@
 %- binding side width of [odd, even] page = [left, right] side width
 %- left side width of [odd, even] page = 1.0in (fixed) + hoffset + [odd, even]sidemargin
 %- assuming A4 paper (210mm x 297mm)
-\setlength{\textwidth}{160mm}% set required text width first
+\setlength{\textwidth}{165mm}% set required text width first
 \setlength{\hoffset}{0mm}% set horizontal offset
 \ifneu@printcopy% if print copy layout enabled
-	\setlength{\oddsidemargin}{12.6mm}% binding side margin
-	\setlength{\evensidemargin}{0mm}% ensure uniform binding side width for printing
+	\setlength{\oddsidemargin}{3mm}% binding side margin
+	\setlength{\evensidemargin}{2.5mm}% ensure uniform binding side width for printing
 \else
-	\setlength{\oddsidemargin}{6.3mm}% left side margin
-	\setlength{\evensidemargin}{6.3mm}% ensure uniform left side width for EThesis
+	\setlength{\oddsidemargin}{3cm}% left side margin
+	\setlength{\evensidemargin}{2.5mm}% ensure uniform left side width for EThesis
 \fi
-\setlength{\marginparwidth}{35pt}% width of margin notes
-\setlength{\marginparsep}{10pt}% width of space between body text and margin notes
+\setlength{\marginparwidth}{0mm}% width of margin notes
+\setlength{\marginparsep}{0mm}% width of space between body text and margin notes
 %- part two -- vertical heights
 %- top height + textheight + bottom height = paperheight
 %- top height = 1.0in (fixed) + voffset + topmargin + headheight + headsep 
-\setlength{\textheight}{247mm}% set required text height first
+\setlength{\textheight}{248mm}% set required text height first
 % \setlength{\voffset}{-17.4mm}% set vertical offset
 \setlength{\voffset}{0mm}% set vertical offset
-\setlength{\topmargin}{20pt}% vertical margin above header
-\setlength{\headheight}{12.7pt}% header height
-\setlength{\headsep}{17.5pt}% vertical margin between header and body text
-\setlength{\footskip}{29.5pt}% vertical margin between footer and body text
+\setlength{\topmargin}{1.5cm}% vertical margin above header
+\setlength{\headheight}{2.5cm}% header height
+%\setlength{\headsep}{1cm}% vertical margin between header and body text
+%\setlength{\footskip}{1cm}% vertical margin between footer and body text
 %- specifies the amount of space between paragraphs.
 \setlength{\parskip}{0.5ex plus 0.25ex minus 0.25ex}
 %- line spacing
@@ -189,12 +189,16 @@
 \def\neu@value@chinesedate{}
 \newcommand{\chinesedate}[1]{\def\neu@value@chinesedate{#1}}
 
+\def\neu@value@subtitle{}
+\newcommand{\subtitle}[1]{\def\neu@value@subtitle{#1}}
 \def\neu@value@author{}
 \renewcommand{\author}[1]{\def\neu@value@author{#1}}
 \def\neu@value@advisor{}
 \newcommand{\advisor}[1]{\def\neu@value@advisor{#1}}
 \def\neu@value@advisorsec{}
 \newcommand{\advisorsec}[1]{\def\neu@value@advisorsec{#1}}
+\def\neu@value@institude{}
+\newcommand{\institude}[1]{\def\neu@value@institude{#1}}
 \def\neu@value@degree{}
 \newcommand{\degree}[1]{\def\neu@value@degree{#1}}
 \def\neu@value@degreetype{}
@@ -243,7 +247,7 @@
 		}}%
 	\cleardoublepage
 	\thispagestyle{empty}
-	\newgeometry{top=19.2mm, bottom=25.4mm, left=28mm, right=26mm}
+	\newgeometry{inner=3cm,outer=2.5cm,top=2.5cm,bottom=2.5cm}
 	\begin{center}
 		\linespread{1}
 		\zihao{5}
@@ -288,7 +292,7 @@
 	\clearpage
 	\if@twoside
 		\thispagestyle{empty}
-		\cleardoublepage[empty]
+		\cleardoublepage
 	\fi
 }
 %- 
@@ -317,49 +321,59 @@
 		}}%
 	\cleardoublepage
 	\thispagestyle{empty}
-	\newgeometry{top=19.2mm, bottom=25.4mm, left=28mm, right=26mm}
+	\newgeometry{inner=3cm,outer=2.5cm,top=2.5cm,bottom=2.5cm}
 	\begin{center}
-		\linespread{1}
-		\zihao{5}
-		\vspace*{3em}
+        {
+    		\hspace*{1em}
+            \linespread{1}
+    		\zihao{5}
+            \sffamily
+            {\neu@label@authorno \ulenhance{\ulextend[100pt]{\hspace*{-\ulhshift}\zihao{5}\neu@value@authorno}}}
+            \neuifstrbk{\neu@value@confidential}{}\quad \hspace*{13em}
+            {\neu@label@confidential \ulenhance{\ulextend[100pt]{\hspace*{-\ulhshift}\zihao{5}\neu@value@confidential}}} \hfill{}
+            \vspace*{1em}
+        }
 
-		{\neu@value@schoollogo}
+		%{\neu@value@schoollogo}
 
 		\linespread{1}
 		\zihao{5}
 		\vspace*{7em}
 
-		{\fontsize{54}{\baselineskip}\rmfamily {\neu@label@thesis}}
+		{\zihao{1} {\rmfamily \bfseries \neu@label@thesis}}
 
 		\vspace*{2em}
-		{\zihao{2} \textrm{\neu@label@enthesis}}
+		%{\zihao{2} \textrm{\neu@label@enthesis}}
+        \linespread{1}
+        \zihao{5}
+        \vspace*{8em}
+        
+        {\zihao{2} {\sffamily \neu@value@title}}
+        
+        \linespread{1}
+        \zihao{5}
+        \vspace*{1em}
+        {\zihao{2} {\sffamily \neu@value@subtitle}}
 	\end{center}
-	\begin{flushleft}
-		\linespread{1}
-		\zihao{5}
-		\vspace*{6em}
-		\bfseries
-
-		{\zihao{3} 论文题目 \qquad {\neu@value@title}}
-
-		\linespread{1}
-		\vspace*{8em}
-		\zihao{3}
-		\def\tabcolsep{0em}
-		\def\arraystretch{2}
-		\begin{tabular}{p{6em} l}
-			作 \qquad 者 & \neu@value@author    \\
-			学 \qquad 号 & \neu@value@authorno  \\
-			学 \qquad 院 & \neu@value@institute \\
-			专 \qquad 业 & \neu@value@major     \\
-			指导教师     & \neu@value@advisor   \\
-		\end{tabular}
-
-	\end{flushleft}
 	\begin{center}
 		\linespread{1}
-		\zihao{3}
-		\vspace*{3em}
+		\vspace*{5em}
+		\zihao{-3}
+		\def\tabcolsep{0em}
+		\def\arraystretch{2}
+		\begin{tabular}{lll}
+			学\quad 院\quad 名\quad 称：\qquad & \qquad & \neu@value@institute \\
+			专\quad 业\quad 名\quad 称：\qquad & \qquad & \neu@value@major  \\
+			学\quad 生\quad 姓\quad 名：\qquad & \qquad & \neu@value@author \\
+			指\quad 导\quad 教\quad 师：\qquad & \qquad & \neu@value@advisor \\
+			& \qquad & \neu@value@advisorsec   \\
+		\end{tabular}
+
+	\end{center}
+	\begin{center}
+		\linespread{1}
+		\zihao{-2}
+		\vspace*{4em}
 		{\bfseries \neu@value@chinesedate}
 		% \vspace*{\stretch{3}}
 	\end{center}
@@ -367,7 +381,7 @@
 	\clearpage
 	\if@twoside
 		\thispagestyle{empty}
-		\cleardoublepage[empty]
+		\cleardoublepage
 	\fi
 }
 %-
@@ -379,27 +393,32 @@
 	\def\neu@label@major{\neu@label@othermajor}
 	\cleardoublepage
 	\thispagestyle{empty}
-	% \newgeometry{top=25.4mm, bottom=25.4mm, left=30mm, right=30mm}
+	% \newgeometry{inner=3cm,outer=2.5cm,top=2.5cm,bottom=2.5cm}
 	\begin{center}
 		\linespread{1.5}
 		\zihao{4}
 		\sffamily
 
-		{\neu@label@category \ulenhance{\ulextend[100pt]{\hspace*{-\ulhshift}\zihao{4}\neu@value@category}}}
-		\neuifstrbk{\neu@value@confidential}{}\quad
-		{\neu@label@confidential \ulenhance{\ulextend[80pt]{\hspace*{-\ulhshift}\zihao{4}\neu@value@confidential}}} \hfill{}
+		%{\neu@label@category \ulenhance{\ulextend[100pt]{\hspace*{-\ulhshift}\zihao{4}\neu@value@category}}}
+		%\neuifstrbk{\neu@value@confidential}{}\quad
+		%{\neu@label@confidential \ulenhance{\ulextend[80pt]{\hspace*{-\ulhshift}\zihao{4}\neu@value@confidential}}} \hfill{}
 
-		{\neu@label@UDC \ulenhance{\ulextend[113pt]{\hspace*{-\ulhshift}\zihao{5}\neu@value@UDC}}}\hfill{}
+		%{\neu@label@UDC \ulenhance{\ulextend[113pt]{\hspace*{-\ulhshift}\zihao{5}\neu@value@UDC}}}\hfill{}
 
 		\linespread{1}
 		\zihao{5}
+		\vspace*{\stretch{3}}
+
+		%{\zihao{2} \rmfamily {\neu@label@thesis}}
+
 		\vspace*{\stretch{1}}
 
-		{\zihao{2} \rmfamily {\neu@label@thesis}}
-
-		\vspace*{\stretch{1}}
-
-		{\zihao{-2} \sffamily \neu@value@title}
+		{\zihao{2} \sffamily \neu@value@title}
+        
+        \vspace*{\stretch{0.5}}
+        
+        {\zihao{3} \sffamily \neu@value@subtitle}
+        
 	\end{center}
 	\begin{flushleft}
 		\linespread{1}
@@ -408,22 +427,24 @@
 
 		\linespread{1.5}
 		\zihao{4}
+        \vspace*{\stretch{3}}
+        
 		\rmfamily
 		\def\tabcolsep{1pt}
 		\def\arraystretch{1.2}
-		\begin{tabular}{llll}
-			\neu@label@author         & \multicolumn{3}{l}{\neu@value@author}                                                               \\
-			\neu@label@authorno       & \multicolumn{3}{l}{\neu@value@authorno}                                                             \\
-			\neu@label@advisor        & \multicolumn{3}{l}{\neu@value@advisor}                                                              \\
-			                          & \multicolumn{3}{l}{\neu@value@advisorsec}                                                           \\
-			\neu@label@degree         & \neu@value@degree                         & \neu@label@degreetype      & \neu@value@degreetype      \\
-			\neu@label@major          & \neu@value@major                                                                                    \\
-			\neu@label@submissiondate & \neu@value@submissiondate                 & \neu@label@oraldefencedate & \neu@value@oraldefencedate \\
-			\neu@label@degreedate     & \neu@value@degreedate                     & \neu@label@chairman        & \neu@value@chairman        \\
-		\end{tabular}
+        \begin{center}
+            \begin{tabular}{lll}
+                \neu@label@author         \qquad  & \quad & \neu@value@author \\
+                \neu@label@advisor        \qquad  & \quad & \neu@value@advisor \\
+                \neu@label@advisorsec     \qquad  & \quad & \neu@value@advisorsec \\
+                \neu@label@ungradinstitute \qquad & \quad & \neu@value@institute \\
+                \neu@label@major           \qquad & \quad & \neu@value@major \\
+            \end{tabular}
+        \end{center}
+    
 		\linespread{1}
 		\zihao{5}
-		\vspace*{\stretch{3}}
+		\vspace*{\stretch{4}}
 	\end{flushleft}
 
 	\begin{center}
@@ -449,7 +470,7 @@
 				Draft Version (\today)
 			\end{footnotesize}
 		\fi
-		\cleardoublepage[empty]
+		\cleardoublepage
 	\else
 		\ifneu@versioninfo
 			\thispagestyle{empty}
@@ -458,7 +479,7 @@
 				\noindent
 				Draft Version (\today)
 			\end{footnotesize}
-			\cleardoublepage[empty]
+			\cleardoublepage
 		\fi
 	\fi
 }
@@ -471,6 +492,8 @@
 \newcommand{\englishauthor}[1]{\def\neu@value@englishauthor{#1}}
 \def\neu@value@englishadvisor{}
 \newcommand{\englishadvisor}[1]{\def\neu@value@englishadvisor{#1}}
+\def\neu@value@englishadvisorsec{}
+\newcommand{\englishadvisorsec}[1]{\def\neu@value@englishadvisorsec{#1}}
 \def\neu@value@englishdegree{}
 \newcommand{\englishdegree}[1]{\edef\neu@value@englishdegree{\zap@space#1 \@empty}}% expand and remove space
 \def\neu@value@englishdegreetype{}
@@ -494,7 +517,7 @@
 	\begin{flushleft}
 		\linespread{1}
 		\zihao{4}
-		{\bfseries \neu@label@enthesisheader}
+		%{\bfseries \neu@label@enthesisheader}
 	\end{flushleft}
 
 	\begin{center}
@@ -506,23 +529,29 @@
 
 		\linespread{1}
 		\zihao{5}
-		\vspace*{6em}
+		\vspace*{14em}
 
 		{\zihao{4} {by} {\neu@value@englishauthor}}
 
 		\linespread{1}
-		\zihao{5}
-		\vspace*{6em}
-
-		{\zihao{4} {Supervisor: }{\neu@value@englishadvisor}}
+		\zihao{4}
+		\vspace*{10em}
+        
+        \rmfamily
+        \def\tabcolsep{1pt}
+        \def\arraystretch{1.2}
+        \begin{tabular}{cll}
+            Supervisor: \qquad & \quad & \neu@value@englishadvisor \\
+            Associate Supervisor: \qquad & \quad & \neu@value@englishadvisorsec \\
+        \end{tabular}
 
 		\linespread{1}
 		\zihao{5}
-		\vspace*{28em}
+		\vspace*{14em}
 		{
 			\linespread{1}
 			\zihao{3}
-			\bfseries
+			%\bfseries
 			{\neu@value@englishuniversity}
 
 			\vspace*{0.8em}
@@ -537,7 +566,7 @@
 	\clearpage
 	\if@twoside
 		\thispagestyle{empty}
-		\cleardoublepage[empty]
+		\cleardoublepage
 	\fi
 }
 %---------------------------------------------------------------------------%
@@ -549,43 +578,48 @@
 \setcounter{page}{1}% 开始页码
 \pagenumbering{Roman}% 页码符号
 {
-\chapter{\neu@value@declare@create}\chaptermark{\neu@value@declare@create}
+\chapter*{\neu@value@declare@create}\chaptermark{\neu@value@declare@create}
 
-\thispagestyle{noheaderstyle}
-\linespread{1.83}
+%\thispagestyle{noheaderstyle}
+\linespread{1.5}
 \zihao{4}
 {\neu@value@declare@creativity}
 
-{\hfill{} {\neu@value@declare@s \hspace*{6em}}}
+%{\hfill{} {\neu@value@declare@s \hspace*{6em}}}
 
-{\hfill{} {\neu@value@declare@d \hspace*{6em}}}
+%{\hfill{} {\neu@value@declare@d \hspace*{6em}}}
 
-\begin{center}
-	{\linespread{1.5} \zihao{2}\sffamily \neu@value@declare@right}
-\end{center}
+%\begin{center}
+	%{\linespread{1.5} \zihao{2}\sffamily \neu@value@declare@right}
+%\end{center}
 
-{\neu@value@declare@rights}
+%{\neu@value@declare@rights}
 
-\vspace*{2em}
+%\vspace*{2em}
 
-{\neu@value@declare@rule}
-\vspace*{1em}
+%{\neu@value@declare@rule}
+%\vspace*{1em}
 
-{半年 \;  \scalebox{1.5}{\(\square\)} \qquad 一年  \;   \scalebox{1.5}{\(\square\)} \qquad 一年半  \; \scalebox{1.5}{\(\square\)} \qquad 两年 \; \scalebox{1.5}{\(\square\)}}
+%{半年 \;  \scalebox{1.5}{\(\square\)} \qquad 一年  \;   \scalebox{1.5}{\(\square\)} \qquad 一年半  \; \scalebox{1.5}{\(\square\)} \qquad 两年 \; \scalebox{1.5}{\(\square\)}}
 
-\vspace*{1em}
+%\vspace*{1em}
+\quad\newline
+\quad\newline
+\quad\newline
+\quad\newline
+\quad\newline
 
-{\noindent{\neu@value@declare@s \hspace*{10em} \neu@value@declare@t \hspace*{9em}}}
+{\noindent{\neu@value@declare@s \hspace*{10em} \neu@value@declare@d \hspace*{9em}}}
 
 
-{\noindent{\hspace*{4em}\neu@value@declare@d \hspace*{10em} \neu@value@declare@d \hspace*{9em}}}
+%{\noindent{\hspace*{4em}\neu@value@declare@d \hspace*{10em} \neu@value@declare@d \hspace*{9em}}}
 
 \vspace*{\stretch{1}}
 }
 \clearpage
 \if@twoside
 	\thispagestyle{empty}
-	\cleardoublepage[empty]
+	\cleardoublepage
 \fi
 }
 %---------------------------------------------------------------------------%
@@ -655,7 +689,7 @@
 		\begingroup
 		\parindent \z@ \rightskip \@pnumwidth
 		\parfillskip -\@pnumwidth
-		\leavevmode \zihao{3}\sffamily
+		\leavevmode \zihao{4}\sffamily
 		\advance\leftskip\@tempdima
 		\hskip -\leftskip
 		#1\nobreak

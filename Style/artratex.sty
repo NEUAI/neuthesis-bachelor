@@ -189,16 +189,16 @@
 	%\RequirePackage{unicode-math}% another math symbol font configuration
 	%\setmathfont{XITS Math}% a complete symbol set for STIX math fonts
 	\ifartx@windows%
-		\setCJKmainfont[AutoFakeBold,ItalicFont=KaiTi]{SimSun}%
-		\setCJKsansfont[AutoFakeBold]{SimHei}%
+		\setCJKmainfont[ItalicFont=KaiTi]{SimSun}%
+		\setCJKsansfont{SimHei}%
 		\setCJKmonofont{FangSong}%
 	\else\ifartx@mac%
 			\setCJKmainfont[ItalicFont=Kaiti SC,BoldItalicFont=Kaiti SC Bold]{Songti SC Light}%
 			\setCJKsansfont{Heiti SC}%
 			\setCJKmonofont{STFangsong}%
 		\else\ifartx@adobe
-				\setCJKmainfont[AutoFakeBold,ItalicFont=AdobeKaitiStd-Regular]{AdobeSongStd-Light}%
-				\setCJKsansfont[AutoFakeBold]{AdobeHeitiStd-Regular}%
+				\setCJKmainfont[ItalicFont=AdobeKaitiStd-Regular]{AdobeSongStd-Light}%
+				\setCJKsansfont{AdobeHeitiStd-Regular}%
 				\setCJKmonofont{AdobeFangsongStd-Regular}%
 			\fi\fi\fi
 	\ifartx@times%
@@ -244,9 +244,11 @@
 \RequirePackage[
 	font={small, singlespacing, stretch=1.1},
 	parskip=0pt,
-	skip=0pt,
+	skip=2pt,
 	labelsep=space,
-	justification=centering
+	justification=centering,
+    labelfont=sf,
+    textfont=sf
 ]{caption}% options: [margin=10pt,labelfont=bf]
 % \captionsetup{font={stretch=1.1}}
 \RequirePackage{subcaption}% package for subfigures
@@ -356,7 +358,7 @@
 %-> Layout, space, and style
 %-
 \ifartx@geometry% enable geometry to redefine page layout
-	\geometry{paper=a4paper,left=31.7mm,right=31.7mm,top=25.4mm,bottom=25.4mm}%
+	\geometry{paper=a4paper,inner=3cm,outer=2.5cm,top=2.5cm,bottom=2.5cm}%
 \fi
 \linespread{1.5}% 1.5 for "one and a half" line spacing, and 2.0 for "double" line spacing
 %\setlength{\parskip}{0.5ex plus 0.25ex minus 0.25ex}% skip space a paragraph
@@ -376,7 +378,7 @@
 \ifartx@biber%
 	% \setlength\bibitemsep{0.2\baselineskip}% set distance between entries
 \fi
-\renewcommand*{\bibfont}{\small}% set font size for bibliography
+\renewcommand*{\bibfont}{\normalsize}% set font size for bibliography
 %-
 %-> Nomenclature item
 %-
