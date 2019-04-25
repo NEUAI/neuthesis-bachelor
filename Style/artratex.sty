@@ -189,16 +189,16 @@
 	%\RequirePackage{unicode-math}% another math symbol font configuration
 	%\setmathfont{XITS Math}% a complete symbol set for STIX math fonts
 	\ifartx@windows%
-		\setCJKmainfont[ItalicFont=KaiTi]{SimSun}%
-		\setCJKsansfont{SimHei}%
+		\setCJKmainfont[AutoFakeBold,ItalicFont=KaiTi]{SimSun}%
+		\setCJKsansfont[AutoFakeBold]{SimHei}%
 		\setCJKmonofont{FangSong}%
 	\else\ifartx@mac%
 			\setCJKmainfont[ItalicFont=Kaiti SC,BoldItalicFont=Kaiti SC Bold]{Songti SC Light}%
 			\setCJKsansfont{Heiti SC}%
 			\setCJKmonofont{STFangsong}%
 		\else\ifartx@adobe
-				\setCJKmainfont[ItalicFont=AdobeKaitiStd-Regular]{AdobeSongStd-Light}%
-				\setCJKsansfont{AdobeHeitiStd-Regular}%
+				\setCJKmainfont[AutoFakeBold,ItalicFont=AdobeKaitiStd-Regular]{AdobeSongStd-Light}%
+				\setCJKsansfont[AutoFakeBold]{AdobeHeitiStd-Regular}%
 				\setCJKmonofont{AdobeFangsongStd-Regular}%
 			\fi\fi\fi
 	\ifartx@times%
