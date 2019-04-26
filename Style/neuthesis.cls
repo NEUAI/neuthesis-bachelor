@@ -523,7 +523,7 @@
 	\begin{center}
 		\linespread{1}
 		\zihao{5}
-		\vspace*{4em}
+		\vspace*{3em}
 
 		{\zihao{2}  \bfseries \linespread{1.5} \neu@value@englishtitle }
 
