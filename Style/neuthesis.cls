@@ -574,11 +574,16 @@
 %---------------------------------------------------------------------------%
 \newcommand{\makedeclaration}{
 \cleardoublepage
-\thispagestyle{empty}
+%\thispagestyle{empty}
+\thispagestyle{plain}
 \setcounter{page}{1}% 开始页码
 \pagenumbering{Roman}% 页码符号
 {
-\chapter*{\neu@value@declare@create}\chaptermark{\neu@value@declare@create}
+%\chapter*{\neu@value@declare@create}\chaptermark{\neu@value@declare@create}
+\markboth{郑重声明}{郑重声明}
+\vspace*{\stretch{0.01}}
+{\zihao{2}\noindent\begin{center}\textbf{郑\quad 重\quad 声\quad 明}\end{center}}
+\vspace*{\stretch{0.08}}
 
 %\thispagestyle{noheaderstyle}
 \linespread{1.5}
