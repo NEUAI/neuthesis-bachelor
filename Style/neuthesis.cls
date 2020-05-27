@@ -132,7 +132,7 @@
 }
 %- underline
 \ifxetex% use underline from xeCJKfntef
-	\renewcommand{\CJKunderlinecolor}{\color[rgb]{0,0,0}}% set underline color
+	\newcommand{\CJKunderlinecolor}{\color[rgb]{0,0,0}}% set underline color
 	\renewcommand{\uline}[1]{\CJKunderline{#1}}% unified name
 \else% use underline from ulem
 	\RequirePackage{ulem}%
