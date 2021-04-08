@@ -415,7 +415,7 @@
 	\fancypagestyle{frontmatterstyle}{% style for frontmatter
 		\fancyhf{}% clear fields
 		% \color{gray} \color{black!80}
-		\fancyhead{\zihao{5} \itshape \textcolor{black!70}{\neu@label@headerprefix \hfill  \leftmark}}% structure elements
+		\fancyhead{\zihao{5} \textcolor{black!70}{\neu@label@headerprefix \hfill  \leftmark}}% structure elements
 		\fancyfoot[CE]{\zihao{5}  -~\thepage~-}% page number
 		\fancyfoot[CO]{\zihao{5}  -~\thepage~-}% page number
 		\renewcommand{\headrulewidth}{0.8pt}% header rule
@@ -423,7 +423,7 @@
 	}
 	\fancypagestyle{mainmatterstyle}{% style for mainmatter
 		\fancyhf{}% clear fields
-		\fancyhead{\zihao{5} \itshape \textcolor{black!70}{\neu@label@headerprefix \hfill \CTEXthechapter\, \leftmark}}% structure elements
+		\fancyhead{\zihao{5} \textcolor{black!70}{\neu@label@headerprefix \hfill \CTEXthechapter\, \leftmark}}% structure elements
 
 		\fancyfoot[CE]{\zihao{5}  -~\thepage~-}% page number
 		\fancyfoot[CO]{\zihao{5}  -~\thepage~-}% page number
@@ -432,7 +432,7 @@
 	}
 	\fancypagestyle{backmatterstyle}{% header and footer style for backmatter
 		\fancyhf{}% clear fields
-		\fancyhead{\zihao{5} \itshape  \textcolor{black!70}{\neu@label@headerprefix \hfill \leftmark} }% structure elements
+		\fancyhead{\zihao{5} \textcolor{black!70}{\neu@label@headerprefix \hfill \leftmark} }% structure elements
 		\fancyfoot[CE]{\zihao{5}  -~\thepage~-}% page number
 		\fancyfoot[CO]{\zihao{5}  -~\thepage~-}% page number
 		\renewcommand{\headrulewidth}{0.8pt}% header rule
@@ -549,15 +549,15 @@
 
 % auto-break line for math 
 \makeatletter
-\def\old@comma{,}
-\catcode`\,=13
-\def,{%
-		\ifmmode%
-			\old@comma\discretionary{}{}{}%
-		\else%
-			\old@comma%
-		\fi%
-	}
+% \def\old@comma{,}
+% \catcode`\,=13
+% \def,{%
+% 		\ifmmode%
+% 			\old@comma\discretionary{}{}{}%
+% 		\else%
+% 			\old@comma%
+% 		\fi%
+% 	}
 \makeatother
 
 % 

@@ -131,12 +131,12 @@
 			\hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
 }
 %- underline
-\ifxetex% use underline from xeCJKfntef
-	\newcommand{\CJKunderlinecolor}{\color[rgb]{0,0,0}}% set underline color
-	\renewcommand{\uline}[1]{\CJKunderline{#1}}% unified name
-\else% use underline from ulem
+% \ifxetex% use underline from xeCJKfntef
+% 	\newcommand{\CJKunderlinecolor}{\color[rgb]{0,0,0}}% set underline color
+% 	\newcommand{\uline}[1]{\CJKunderline{#1}}% unified name
+% \else% use underline from ulem
 	\RequirePackage{ulem}%
-\fi
+% \fi
 \newcommand{\ulenhance}[2][1pt]{% enhanced underline
 	\def\ULthickness{#1}% set thickness
 	\uline{#2}}
